@@ -10,12 +10,20 @@ public class TestModel {
 		//System.out.println("GRAFO********************");
 		//System.out.println(model.getGraph());
 		
-		System.out.println("Cammino minimo");
-		System.out.println(model.calcolaCamminoMinimoavanzato(new Fermata(15,"Argentine",new LatLng(2.29011,48.87537)),new Fermata(20,"Athis Mons",new LatLng(2.40332,48.71245))));
+		//System.out.println("Cammino minimo");
+		//System.out.println(model.calcolaCamminoMinimoavanzato(new Fermata(15,"Argentine",new LatLng(2.29011,48.87537)),new Fermata(20,"Athis Mons",new LatLng(2.40332,48.71245))));
 		
 		
-		System.out.println("tempo tot");
-		System.out.println(model.tempo);
+		//System.out.println("tempo tot");
+		//System.out.println(model.tempo);
+		
+		System.out.println("GRAFO********************");
+		System.out.println(model.createGraphSuLinea());
+		
+		System.out.println("Cammino minimo**************************************************");
+		System.out.println(model.camminoMinimoSuLinea(new Fermata(15,"Argentine",new LatLng(2.29011,48.87537)),new Fermata(20,"Athis Mons",new LatLng(2.40332,48.71245))));
+		
+		
 	}
 
 }

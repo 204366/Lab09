@@ -23,7 +23,8 @@ public class TestDAO {
 		System.out.println(conn);
 		
 		System.out.println("Lista fermate su linea");
-		//List<FermataSuLinea> f = metroDAO.getFermataSuLinea(15,"Argentine",new LatLng(2.29011,48.87537)),new Fermata(20,"Athis Mons",new LatLng(2.40332,48.71245);
+		List<FermataSuLinea> f = metroDAO.getFermataSuLinea();
+		System.out.println(f);
 		
 	}
 

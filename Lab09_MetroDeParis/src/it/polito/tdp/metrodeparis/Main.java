@@ -1,5 +1,6 @@
 package it.polito.tdp.metrodeparis;
 
+import it.polito.tdp.metrodeparis.model.Model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,8 +13,10 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MetroDeParis.fxml"));
 			BorderPane root = (BorderPane) loader.load();
+			Model model = new Model();
 			MetroDeParisController controller = loader.getController();
 
+			controller.setModel(model);
 			// TODO: Set the model
 
 			Scene scene = new Scene(root);

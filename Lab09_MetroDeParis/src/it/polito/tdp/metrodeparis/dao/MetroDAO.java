@@ -42,7 +42,7 @@ public class MetroDAO {
 
 		return fermate;
 	}
-	
+	/*
 	public List<FermataSuLinea> getFermataSuLinea(Fermata p) {
 		
 
@@ -76,6 +76,41 @@ public class MetroDAO {
 
 		return fermate;
 	}
+	*/
+	
+public List<FermataSuLinea> getFermataSuLinea() {
+		
+
+		final String sql = "SELECT distinct f1.id_fermata as idF1, f1.nome as nome1, f1.coordx as x1, f1.coordy as y1,"
+				+ " linea.id_linea, linea.nome, velocita, intervallo  FROM fermata as f1,linea,connessione "
+				+ "WHERE id_fermata = connessione.id_stazA "+
+				"AND connessione.id_linea = linea.id_linea";
+		
+		List<FermataSuLinea> fermate = new ArrayList<FermataSuLinea>();
+
+		try {
+			Connection conn = DBConnect.getInstance().getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				FermataSuLinea f = new FermataSuLinea(rs.getInt("idF1"), rs.getString("nome1"),
+						new Linea(rs.getInt("id_linea"),rs.getString("nome"), rs.getDouble("velocita"), rs.getDouble("intervallo")),
+						new LatLng(rs.getDouble("x1"), rs.getDouble("y1")));
+				fermate.add(f);
+			}
+
+			st.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Errore di connessione al Database.");
+		}
+
+		return fermate;
+	}
+	
 	
 	public List<Connessione> getAllConnessioni() {
 
